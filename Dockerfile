@@ -21,6 +21,8 @@ RUN sed -ie 's/env bash/env sh/' bin/riemann
 ## hack default config to listen on all interfaces
 RUN sed -ie 's/127.0.0.1/0.0.0.0/' etc/riemann.config
 
+ADD etc /app/etc
+
 EXPOSE 5555/tcp 5555/udp 5556
 
 CMD [ "bin/riemann", "etc/riemann.config" ]
